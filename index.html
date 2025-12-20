@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Filtro de Región - Múltiples Países</title>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            background: #1e293b;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        p {
+            text-align: center;
+            color: #cbd5e1;
+        }
+
+        .upload {
+            margin: 25px 0;
+            text-align: center;
+        }
+
+        input[type="file"] {
+            background: #0f172a;
+            color: #fff;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            cursor: pointer;
+        }
+
+        select {
+            background: #0f172a;
+            color: #fff;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            width: 70%;
+            margin-top: 15px;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            background: #38bdf8;
+            color: #020617;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #0ea5e9;
+        }
+
+        textarea {
+            width: 100%;
+            height: 280px;
+            margin-top: 20px;
+            background: #020617;
+            color: #e5e7eb;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            padding: 15px;
+            resize: none;
+            font-family: Consolas, monospace;
+            font-size: 14px;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 13px;
+            color: #94a3b8;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Filtro de Región - Múltiples Países</h1>
+    <p>Sube un archivo TXT y filtra por uno o varios países</p>
+
+    <div class="upload">
+        <input type="file" id="fileInput" accept=".txt"><br>
+
+        <select id="paises" multiple>
+            <!-- América -->
+            <option value="united states">Estados Unidos</option>
+            <option value="canada">Canadá</option>
+            <option value="mexico">México</option>
+            <option value="argentina">Argentina</option>
+            <option value="bolivia">Bolivia</option>
+            <option value="brazil">Brasil</option>
+            <option value="chile">Chile</option>
+            <option value="colombia">Colombia</option>
+            <option value="costa rica">Costa Rica</option>
+            <option value="cuba">Cuba</option>
+            <option value="dominican republic">República Dominicana</option>
+            <option value="ecuador">Ecuador</option>
+            <option value="el salvador">El Salvador</option>
+            <option value="guatemala">Guatemala</option>
+            <option value="haiti">Haití</option>
+            <option value="honduras">Honduras</option>
+            <option value="jamaica">Jamaica</option>
+            <option value="nicaragua">Nicaragua</option>
+            <option value="panama">Panamá</option>
+            <option value="paraguay">Paraguay</option>
+            <option value="peru">Perú</option>
+            <option value="uruguay">Uruguay</option>
+            <option value="venezuela">Venezuela</option>
+
+            <!-- Europa -->
+            <option value="spain">España</option>
+            <option value="france">Francia</option>
+            <option value="germany">Alemania</option>
+            <option value="italy">Italia</option>
+            <option value="united kingdom">Reino Unido</option>
+            <option value="portugal">Portugal</option>
+            <option value="netherlands">Países Bajos</option>
+            <option value="belgium">Bélgica</option>
+            <option value="switzerland">Suiza</option>
+            <option value="sweden">Suecia</option>
+            <option value="norway">Noruega</option>
+            <option value="denmark">Dinamarca</option>
+            <option value="finland">Finlandia</option>
+            <option value="poland">Polonia</option>
+            <option value="austria">Austria</option>
+            <option value="ireland">Irlanda</option>
+            <option value="czech republic">República Checa</option>
+            <option value="romania">Rumanía</option>
+            <option value="greece">Grecia</option>
+            <option value="ukraine">Ucrania</option>
+
+            <!-- Asia -->
+            <option value="china">China</option>
+            <option value="japan">Japón</option>
+            <option value="south korea">Corea del Sur</option>
+            <option value="india">India</option>
+            <option value="pakistan">Pakistán</option>
+            <option value="bangladesh">Bangladesh</option>
+            <option value="indonesia">Indonesia</option>
+            <option value="thailand">Tailandia</option>
+            <option value="vietnam">Vietnam</option>
+            <option value="philippines">Filipinas</option>
+            <option value="malaysia">Malasia</option>
+            <option value="singapore">Singapur</option>
+            <option value="israel">Israel</option>
+            <option value="saudi arabia">Arabia Saudita</option>
+            <option value="united arab emirates">Emiratos Árabes Unidos</option>
+            <option value="qatar">Qatar</option>
+            <option value="iran">Irán</option>
+            <option value="iraq">Irak</option>
+            <option value="turkey">Turquía</option>
+
+            <!-- África -->
+            <option value="south africa">Sudáfrica</option>
+            <option value="egypt">Egipto</option>
+            <option value="morocco">Marruecos</option>
+            <option value="nigeria">Nigeria</option>
+            <option value="kenya">Kenia</option>
+            <option value="ethiopia">Etiopía</option>
+            <option value="tunisia">Túnez</option>
+            <option value="algeria">Argelia</option>
+            <option value="ghana">Ghana</option>
+
+            <!-- Oceanía -->
+            <option value="australia">Australia</option>
+            <option value="new zealand">Nueva Zelanda</option>
+        </select><br>
+
+        <button onclick="procesarArchivo()">Procesar archivo</button>
+    </div>
+
+    <textarea id="resultado" placeholder="Aquí aparecerán los registros filtrados..."></textarea>
+
+    <div class="actions">
+        <button onclick="copiarTexto()">Copiar resultado</button>
+        <button onclick="descargarTXT()">Descargar TXT</button>
+    </div>
+
+    <footer>
+        Créditos: @falco10080 (ghost10080)
+    </footer>
+</div>
+
+<script>
+    let textoFiltrado = "";
+
+    function procesarArchivo() {
+        const input = document.getElementById("fileInput");
+        const select = document.getElementById("paises");
+        const file = input.files[0];
+
+        const paisesSeleccionados = Array.from(select.selectedOptions)
+            .map(opt => opt.value);
+
+        if (!file) {
+            alert("Por favor selecciona un archivo TXT");
+            return;
+        }
+
+        if (paisesSeleccionados.length === 0) {
+            alert("Selecciona al menos un país");
+            return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const contenido = e.target.result;
+            const lineas = contenido.split(/\n+/);
+
+            const filtradas = lineas.filter(linea =>
+                paisesSeleccionados.some(pais =>
+                    linea.toLowerCase().includes(`country = ${pais}`)
+                )
+            );
+
+            textoFiltrado = filtradas.join("\n\n");
+            document.getElementById("resultado").value =
+                textoFiltrado || "No se encontraron registros para los países seleccionados.";
+        };
+
+        reader.readAsText(file);
+    }
+
+    function copiarTexto() {
+        const textarea = document.getElementById("resultado");
+        textarea.select();
+        document.execCommand("copy");
+        alert("Texto copiado al portapapeles");
+    }
+
+    function descargarTXT() {
+        if (!textoFiltrado) {
+            alert("No hay datos para descargar");
+            return;
+        }
+
+        const blob = new Blob([textoFiltrado], { type: "text/plain" });
+        const url = URL.createObjectURL(blob);
+
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "region_multi_pais.txt";
+        a.click();
+
+        URL.revokeObjectURL(url);
+    }
+</script>
+
+</body>
+</html>
